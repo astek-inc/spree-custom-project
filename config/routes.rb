@@ -1,3 +1,8 @@
 Spree::Core::Engine.routes.draw do
-  # Add your extension routes here
+  get '/design-your-own', to: 'custom_projects#new'
+  resources :custom_projects
+
+  namespace :admin do
+    resources :custom_projects
+  end
 end

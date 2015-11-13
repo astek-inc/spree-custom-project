@@ -2,4 +2,24 @@
 # See https://github.com/svenfuchs/rails-i18n/tree/master/rails%2Flocale for starting points.
 
 en:
-  hello: "Hello world"
+  spree:
+    custom_project: 'Custom Project'
+    name: 'Name'
+    email: 'Email'
+    confirm_email: 'Confirm Email'
+    fields_must_match_message: 'Email and confirm email fields must match.'
+    phone_number: 'Phone Number'
+    custom_project_type: 'Product Type'
+    your_project: 'Your Project'
+    image_upload: 'Image Upload'
+    describe_your_project: 'Describe Your Project'
+    description_placeholder: 'Type your message here...'
+    i_agree_to_terms: 'I Agree to Terms & Conditions'
+    affirmative: 'Yes'
+    submit: 'Submit'
+    start_your_project: 'Start your custom wallcovering project!'
+    fill_out_form_instructions: 'Just fill out the form below and someone from our design team will get back to you shortly!'
+    check_out_tips_instructions: 'Check out our <a href="/custom_tips">Custom Design Tips</a> page for tips on our custom design service.'
+    image_upload_instructions: 'Upload an image you would like to work with or are using for inspiration.'
+    description_instructions: 'Be as detailed as possible. Where are you planning to use this product? Do you want a designer to edit or create an image? What is the overall effect you would like to create? The more information we have the easier it will be to create the perfect product for you.'
+    copyright_acknowledgement: 'I am the copyright owner to any images that I intend to provide for this project or have obtained written permission from the copyright owner. I have read designyourwall.com <a href="/help/terms-and-conditions">terms and conditions</a>.'

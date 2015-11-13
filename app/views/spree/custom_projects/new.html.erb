@@ -1,0 +1,89 @@
+<style type="text/css">
+  .alert {
+    width: 90%;
+    margin: 0 auto;
+  }
+
+  .alert-notice {
+    background-color: #dff0d8;
+    border-color: #d6e9c6;
+    color: #3c763d;
+  }
+
+  .alert-alert {
+    color: #a94442;
+    background-color: #f2dede;
+    border-color: #ebccd1;
+  }
+</style>
+
+<div class="custom articles">
+  <%= form_for @custom_project, html: { multipart: true } do |f| %>
+      <h1><%= Spree.t(:start_your_project) %></h1>
+      <p class="lead"><%= Spree.t(:fill_out_form_instructions) %></p>
+      <p><%= Spree.t(:check_out_tips_instructions).html_safe %></p>
+
+      <div class="row">
+        <h3 class="col-md-12">Contact Information</h3>
+
+        <%= f.field_container :contact_name, class: %w(form-group col-lg-6) do %>
+            <%= f.text_field :contact_name, :class => 'form-control', :required => true, :placeholder => Spree.t(:name) %>
+        <% end %>
+
+        <%= f.field_container :contact_phone, class: %w(form-group col-lg-6) do %>
+            <%= f.text_field :contact_phone, :class => 'form-control', :required => true, :placeholder => Spree.t(:phone_number) %>
+        <% end %>
+
+        <%= f.field_container :contact_email, class: %w(form-group col-lg-6) do %>
+            <%= f.email_field :contact_email, class: 'form-control', :required => true, :placeholder => Spree.t(:email), :oninput => "$('#custom_project_confirm_email').attr('pattern', escapeRegExp(this.value))" %>
+        <% end %>
+
+        <%= f.field_container :confirm_email, class: %w(form-group col-lg-6) do %>
+            <%= f.email_field :confirm_email, class: 'form-control', :required => true, :placeholder => Spree.t(:confirm_email), :title => Spree.t(:fields_must_match_message) %>
+        <% end %>
+        <script type="text/javascript">
+          function escapeRegExp(str) {
+            return str.replace(/[\-\[\]\/\{\}\(\)\*\+\?\.\\\^\$\|]/g, "\\$&");
+          }
+        </script>
+      </div>
+
+      <div class="row">
+        <h3 class="col-md-12"><%= Spree.t(:your_project) %></h3>
+
+        <%= f.field_container :custom_project_type, class: %w(form-group col-md-5) do %>
+            <%= f.label :custom_project_type, Spree.t(:custom_project_type) %>
+            <%= f.select(:custom_project_type_id, @custom_project_types.collect {|type| [ type.name, type.id ] }, {prompt: 'Select'}, {class: 'form-control', required: 'required'}) %>
+        <% end %>
+
+        <div class="col-md-6">
+          <%= f.label :image, Spree.t(:image_upload) %>
+          <%= f.file_field :image, :required => true %>
+          <p class="p-sm"><%= Spree.t(:image_upload_instructions) %></p>
+        </div>
+      </div>
+
+      <div class="row">
+        <%= f.field_container :description, class: %w(form-group col-md-12) do %>
+            <%= f.label :description, Spree.t(:describe_your_project) %>
+            <%= f.text_area :description, class: 'form-control', :rows => 3, :required => true, :placeholder => Spree.t(:description_placeholder) %>
+            <p class="p-sm"><%= Spree.t(:description_instructions) %></p>
+        <% end %>
+      </div>
+
+      <div class="row">
+        <div class="col-md-12">
+          <h4><%= Spree.t(:i_agree_to_terms) %>: <span style="color:red">*</span></h4>
+          <div class="checkbox">
+            <label>
+              <%= f.check_box :agree_to_terms, :required => true %>
+              <%= Spree.t(:affirmative) %>
+            </label>
+          </div>
+          <p class="p-sm"><%= Spree.t(:copyright_acknowledgement).html_safe %></p>
+          <hr>
+          <%= f.button Spree.t(:submit), { :type => 'submit', :class => %w(btn-lg btn btn-primary col-sm-4 col-xs-12) } %>
+        </div>
+      </div>
+  <% end %>
+</div>
