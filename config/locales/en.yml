@@ -4,11 +4,14 @@
 en:
   spree:
     custom_project: 'Custom Project'
+    custom_projects: 'Custom Projects'
+    contact_information: 'Contact Information'
     name: 'Name'
     email: 'Email'
     confirm_email: 'Confirm Email'
     fields_must_match_message: 'Email and confirm email fields must match.'
     phone_number: 'Phone Number'
+    project_information: 'Project Information'
     custom_project_type: 'Product Type'
     your_project: 'Your Project'
     image_upload: 'Image Upload'

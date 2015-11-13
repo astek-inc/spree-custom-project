@@ -7,14 +7,6 @@ module Spree
     end
 
     def create
-
-      # Spree::BaseMailer.mail
-      #   :from     => (SpreeContactUs.mailer_from || @contact.email),
-      #   :reply_to => @contact.email,
-      #   :subject  => (SpreeContactUs.require_subject ? @contact.subject : Spree.t(:subject, :email => @contact.email)),
-      #   :to       => SpreeContactUs.mailer_to
-
-
       @custom_project = Spree::CustomProject.new(custom_project_params)
       if @custom_project.save
 

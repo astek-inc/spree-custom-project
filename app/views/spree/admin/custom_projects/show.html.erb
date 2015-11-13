@@ -1,0 +1,54 @@
+<h2><%= Spree.t(:custom_project) %></h2>
+
+<style type="text/css">
+  th {
+    width: 120px;
+  }
+</style>
+
+<div class="row">
+  <h3 class="col-md-12"><%= Spree.t(:contact_information) %></h3>
+  <table class="table table-bordered">
+    <tbody>
+      <tr>
+        <th><%= Spree.t(:name) %></th>
+        <td><%= @custom_project.contact_name %></td>
+      </tr>
+
+      <tr>
+        <th><%= Spree.t(:phone) %></th>
+        <td><%= @custom_project.contact_phone %></td>
+      </tr>
+
+      <tr>
+        <th><%= Spree.t(:email) %></th>
+        <td><%= @custom_project.contact_email %></td>
+      </tr>
+    </tbody>
+
+  </table>
+</div>
+
+<div class="row">
+  <h3 class="col-md-12"><%= Spree.t(:project_information) %></h3>
+
+  <table class="table table-bordered">
+    <tbody>
+      <tr>
+        <th><%= Spree.t(:custom_project_type) %></th>
+        <td><%= @custom_project.custom_project_type.name %></td>
+      </tr>
+
+      <tr>
+        <th><%= Spree.t(:description) %></th>
+        <td><%= @custom_project.description %></td>
+      </tr>
+
+      <tr>
+        <th><%= Spree.t(:image) %></th>
+        <td><%= link_to(image_tag(@custom_project.image.url(:thumbnail)), @custom_project.image.url(:original)) %></td>
+      </tr>
+    </tbody>
+
+  </table>
+</div>

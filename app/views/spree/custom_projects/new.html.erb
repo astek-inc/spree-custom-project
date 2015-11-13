@@ -24,7 +24,7 @@
       <p><%= Spree.t(:check_out_tips_instructions).html_safe %></p>
 
       <div class="row">
-        <h3 class="col-md-12">Contact Information</h3>
+        <h3 class="col-md-12"><%= Spree.t(:contact_information) %></h3>
 
         <%= f.field_container :contact_name, class: %w(form-group col-lg-6) do %>
             <%= f.text_field :contact_name, :class => 'form-control', :required => true, :placeholder => Spree.t(:name) %>
