@@ -9,10 +9,7 @@ module Spree
     def create
       @custom_project = Spree::CustomProject.new(custom_project_params)
       if @custom_project.save
-
-        # Email notification to info@designyourwall.com with a link to the custom project in the admin back end.
-
-
+        Spree::CustomProjects::CustomProjectMailer.notification_email(@custom_project).deliver_later
         redirect_to('/design-your-own', :notice => 'Your information was submitted successfully. You will hear from a representative soon.')
       else
         redirect_to('/design-your-own', :alert => 'An error occurred while attempting to send your message. Please try again.')
