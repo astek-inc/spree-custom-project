@@ -22,7 +22,7 @@
 
       <tr>
         <th><%= Spree.t(:email) %></th>
-        <td><%= @custom_project.contact_email %></td>
+        <td><%= mail_to @custom_project.contact_email %></td>
       </tr>
     </tbody>
 
