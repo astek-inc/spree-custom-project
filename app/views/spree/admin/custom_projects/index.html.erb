@@ -7,20 +7,35 @@
       <thead>
       <tr data-hook="admin_custom_projects_index_headers">
         <th><%= t(:id) %></th>
+        <th><%= Spree.t(:created_at) %></th>
         <th><%= Spree.t(:contact_name) %></th>
+        <th><%= Spree.t(:contact_email) %></th>
         <th><%= Spree.t(:image) %></th>
+        <th><%= Spree.t(:status) %></th>
         <th data-hook="admin_custom_projects_index_header_actions" class="actions"></th>
       </tr>
       </thead>
       <tbody>
       <% @collection.each do |custom_project| %>
+        <% case custom_project.custom_project_status.name %>
+          <% when 'New' %>
+            <% @label_class = 'warning' %>
+          <% when 'Contacted' %>
+            <% @label_class = 'success' %>
+        <% end %>
+
           <tr id="<%= spree_dom_id custom_project %>" data-hook="admin_custom_projects_index_rows" class="<%= cycle('odd', 'even') %>">
             <td class="id"><%= custom_project.id %></td>
+            <td class="created-at"><%= custom_project.created_at.to_date %></td>
             <td class="contact_name"><%= custom_project.contact_name %></td>
+            <td class="contact_email"><%= mail_to custom_project.contact_email %></td>
             <td class="image"><%= image_tag custom_project.image.url(:thumbnail) %></td>
+            <td class="status">
+              <span class="label label-<%= @label_class %>"><%= custom_project.custom_project_status.name %></span>
+            </td>
             <td class="actions actions-2 text-right">
-              <% #= link_to_edit(custom_project, :no_text => true) %>
-              <%= link_to_with_icon('eye-open', nil, admin_custom_project_url(custom_project), {:name => 'View', :no_text => true, :class => 'btn btn-primary btn-sm'}) %>
+              <%= link_to_edit(custom_project, :no_text => true) %>
+              <%# = link_to_with_icon('eye-open', nil, admin_custom_project_url(custom_project), {:name => 'View', :no_text => true, :class => 'btn btn-primary btn-sm'}) %>
               <%= link_to_delete(custom_project, :no_text => true) %>
             </td>
           </tr>

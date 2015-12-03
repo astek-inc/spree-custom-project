@@ -1,0 +1,63 @@
+<h2><%= Spree.t(:custom_project) %></h2>
+
+<style type="text/css">
+  th {
+    width: 120px;
+  }
+</style>
+
+<div class="row">
+  <h3 class="col-md-12"><%= Spree.t(:contact_information) %></h3>
+  <table class="table table-bordered">
+    <tbody>
+      <tr>
+        <th><%= Spree.t(:name) %></th>
+        <td><%= @custom_project.contact_name %></td>
+      </tr>
+
+      <tr>
+        <th><%= Spree.t(:phone) %></th>
+        <td><%= @custom_project.contact_phone %></td>
+      </tr>
+
+      <tr>
+        <th><%= Spree.t(:email) %></th>
+        <td><%= mail_to @custom_project.contact_email %></td>
+      </tr>
+    </tbody>
+
+  </table>
+</div>
+
+<div class="row">
+  <h3 class="col-md-12"><%= Spree.t(:project_information) %></h3>
+  <%= form_for [:admin, @custom_project] do |f| %>
+    <table class="table table-bordered">
+      <tbody>
+        <tr>
+          <th><%= Spree.t(:custom_project_type) %></th>
+          <td><%= @custom_project.custom_project_type.name %></td>
+        </tr>
+
+        <tr>
+          <th><%= Spree.t(:description) %></th>
+          <td><%= @custom_project.description %></td>
+        </tr>
+
+        <tr>
+          <th><%= Spree.t(:image) %></th>
+          <td><%= link_to(image_tag(@custom_project.image.url(:thumbnail)), @custom_project.image.url(:original)) %></td>
+        </tr>
+
+        <tr>
+          <th><%= Spree.t(:status) %></th>
+          <td><%= f.field_container :custom_project_status, class: ['form-group'] do %>
+            <%= f.select :custom_project_status_id, @custom_project_statuses.collect { |s| [s.name, s.id] }, {}, { class: 'select2', style: 'width: 180px;' } %>
+          <% end %></td>
+        </tr>
+      </tbody>
+    </table>
+
+      <%= render :partial => 'spree/admin/shared/edit_resource_links' %>
+  <% end %>
+</div>

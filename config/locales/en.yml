@@ -26,3 +26,6 @@ en:
     image_upload_instructions: 'Upload an image you would like to work with or are using for inspiration.'
     description_instructions: 'Be as detailed as possible. Where are you planning to use this product? Do you want a designer to edit or create an image? What is the overall effect you would like to create? The more information we have the easier it will be to create the perfect product for you.'
     copyright_acknowledgement: 'I am the copyright owner to any images that I intend to provide for this project or have obtained written permission from the copyright owner. I have read designyourwall.com <a href="/help/terms-and-conditions">terms and conditions</a>.'
+
+    contact_name: 'Contact Name'
+    contact_email: 'Contact Email'
