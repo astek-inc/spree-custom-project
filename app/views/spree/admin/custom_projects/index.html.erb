@@ -2,6 +2,67 @@
     <%= Spree.t(:custom_projects) %>
 <% end %>
 
+<% content_for :table_filter do %>
+    <div data-hook="admin_custom_projects_sidebar">
+
+      <%= search_form_for [:admin, @search] do |f| %>
+          <div data-hook="admin_custom_projects_index_search" class="row">
+              <div class="date-range-filter col-md-12">
+                <div class="form-group">
+                  <%= label_tag :q_created_at_gt, Spree.t(:date_range) %>
+                  <div class="row no-padding-bottom">
+                    <div class="col-md-6">
+                      <div class="input-group">
+                        <%= f.text_field :created_at_gt, :class => 'datepicker datepicker-from form-control', :value => params[:q][:created_at_gt], :placeholder => Spree.t(:start) %>
+                        <span class="input-group-addon">
+                          <i class="icon icon-calendar"></i>
+                        </span>
+                      </div>
+                    </div>
+                    <div class="col-md-6">
+                      <div class="input-group">
+                        <%= f.text_field :created_at_lt, :class => 'datepicker datepicker-to form-control', :value => params[:q][:created_at_lt], :placeholder => Spree.t(:stop) %>
+                        <span class="input-group-addon">
+                          <i class="icon icon-calendar"></i>
+                        </span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="col-md-6">
+                <div class="form-group">
+                  <%= f.label :contact_name_cont, 'Contact Name Starts With' %>
+                  <%= f.text_field :contact_name_cont, :size => 15, class: "form-control js-quick-search-target" %>
+                </div>
+              </div>
+
+              <div class="col-md-6">
+                  <div class="form-group">
+                    <%= label_tag :q_custom_project_status_id_eq, Spree.t(:status) %>
+                    <%= f.select :custom_project_status_id_eq, Spree::CustomProjectStatus.all.map {|s| [s.name, s.id]}, {:include_blank => true}, :class => 'select2 js-filterable' %>
+                  </div>
+              </div>
+
+            <div class="col-md-12">
+              <div class="field checkbox">
+                <label>
+                  <%= f.check_box :deleted_at_null, {:checked => params[:q][:deleted_at_null] == '0'}, '0', '1' %>
+                  <%= Spree.t(:show_deleted) %>
+                </label>
+              </div>
+            </div>
+          </div>
+
+          <div data-hook="admin_custom_projects_index_search_buttons" class="form-actions">
+            <%= button Spree.t(:search), 'search' %>
+          </div>
+      <% end %>
+
+    </div>
+<% end %>
+
 <%= render partial: 'spree/admin/shared/index_table_options', locals: { collection: @collection } %>
 
 <% if @collection.any? %>
@@ -34,6 +95,8 @@
             <!--<td class="image"><#%= image_tag custom_project.image.url(:thumbnail) %></td>-->
             <td class="status">
               <span class="label label-<%= @label_class %>"><%= custom_project.custom_project_status.name %></span>
+              <span class="icon icon-filter filterable js-add-filter" data-ransack-field="q_custom_project_status_id_eq" data-ransack-value="<%= custom_project.custom_project_status_id %>"></span>
+
             </td>
             <td class="actions actions-2 text-right">
               <%= link_to_edit(custom_project, :no_text => true) %>
