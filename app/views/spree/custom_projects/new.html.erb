@@ -10,7 +10,8 @@
     color: #3c763d;
   }
 
-  .alert-alert {
+  .alert-alert,
+  .alert-recaptcha_error {
     color: #a94442;
     background-color: #f2dede;
     border-color: #ebccd1;
@@ -81,7 +82,13 @@
             </label>
           </div>
           <p class="p-sm"><%= Spree.t(:copyright_acknowledgement).html_safe %></p>
+
           <hr>
+
+          <%= recaptcha_tags %>
+
+          <br>
+
           <%= f.button Spree.t(:submit), { :type => 'submit', :class => %w(btn-lg btn btn-primary col-sm-4 col-xs-12) } %>
         </div>
       </div>
