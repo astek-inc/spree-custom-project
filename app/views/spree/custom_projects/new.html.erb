@@ -17,8 +17,12 @@
     border-color: #ebccd1;
   }
 </style>
+<% current_store.seo_title ="Design Your Own Wallpaper" %>
 
+<div class="custom-wallpaper-header">
+  </div>
 <div class="custom articles">
+
   <%= form_for @custom_project, html: { multipart: true } do |f| %>
       <h1><%= Spree.t(:start_your_project) %></h1>
       <p class="lead"><%= Spree.t(:fill_out_form_instructions) %></p>
@@ -92,5 +96,10 @@
           <%= f.button Spree.t(:submit), { :type => 'submit', :class => %w(btn-lg btn btn-primary col-sm-4 col-xs-12) } %>
         </div>
       </div>
-  <% end %>
+  <% end %>  
 </div>
+
+  <div class="custom-element-1">
+  </div>
+  <div class="custom-element-2">
+  </div>
