@@ -1,8 +1,6 @@
+<div class="custom-wallpaper-header"></div>
 
-<div class="custom-wallpaper-header">
-  </div>
 <div class="custom articles">
-
   <%= form_for @custom_project, html: { multipart: true } do |f| %>
       <h1><%= Spree.t(:start_your_project) %></h1>
       <p class="lead"><%= Spree.t(:fill_out_form_instructions) %></p>
@@ -26,6 +24,7 @@
         <%= f.field_container :confirm_email, class: %w(form-group col-lg-6) do %>
             <%= f.email_field :confirm_email, class: 'form-control', :required => true, :placeholder => Spree.t(:confirm_email), :title => Spree.t(:fields_must_match_message) %>
         <% end %>
+
         <script type="text/javascript">
           function escapeRegExp(str) {
             return str.replace(/[\-\[\]\/\{\}\(\)\*\+\?\.\\\^\$\|]/g, "\\$&");
@@ -79,7 +78,5 @@
   <% end %>
 </div>
 
-  <div class="custom-element-1">
-  </div>
-  <div class="custom-element-2">
-  </div>
+<div class="custom-element-1"></div>
+<div class="custom-element-2"></div>
