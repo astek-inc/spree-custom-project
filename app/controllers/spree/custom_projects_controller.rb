@@ -3,7 +3,7 @@ module Spree
 
     def new
       current_store.seo_title = 'Custom Wallpaper'
-      current_store.meta_description = 'Have the most unique wallpaper in your home or office with wall décor from one of DesignYourWall\'s featured designers!'
+      current_store.meta_description = 'Do you have your own wallpaper design in mind? We can print custom wallpaper at DesignYourOwn!'
 
       @custom_project = Spree::CustomProject.new
       @custom_project_types = Spree::CustomProjectType.all
