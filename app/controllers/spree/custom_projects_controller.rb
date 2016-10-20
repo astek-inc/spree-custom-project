@@ -2,6 +2,9 @@ module Spree
   class CustomProjectsController < Spree::StoreController
 
     def new
+      current_store.seo_title = 'Custom Wallpaper'
+      current_store.meta_description = 'Have the most unique wallpaper in your home or office with wall décor from one of DesignYourWall\'s featured designers!'
+
       @custom_project = Spree::CustomProject.new
       @custom_project_types = Spree::CustomProjectType.all
     end
