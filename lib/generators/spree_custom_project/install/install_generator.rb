@@ -25,6 +25,12 @@ module SpreeCustomProject
           puts 'Skipping rake db:migrate, don\'t forget to run it!'
         end
       end
+
+      source_root File.expand_path('../../../templates', __FILE__)
+      desc "Creates an initializer in your application's config/initializers dir"
+      def copy_initializer
+        template 'spree_custom_project.rb', 'config/initializers/spree_custom_project.rb'
+      end
     end
   end
 end
